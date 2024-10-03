@@ -22,8 +22,7 @@ for csv in csv_files:
 
     savings_reindexed = closing_balance_of_day.reindex(full_date_range)
 
-    savings_ffilled = savings_reindexed.ffill()
-    savings_filled = savings_ffilled.bfill()
+    savings_filled = savings_reindexed.ffill().fillna(0)
 
     savings_processed = pd.DataFrame()
     savings_processed["Date"] = savings_filled.index
